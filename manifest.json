@@ -1,20 +1,23 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "google maps redirect",
-    "description":"Adds Maps to google search results and redirects to search for phrase in Google Maps site.",
+    "description": "Adds Maps to google search results and redirects to search for phrase in Google Maps site.",
     "version": "1.0",
-    "content_scripts": [
-        {
-          "matches": ["https://www.google.com/*"],
-          "js": ["content.js"]
-        }
-      ],
-    "browser_action": {
+    "action": {
         "default_popup": "popup.html",
         "default_icon": {
-          "16": "128.png",
-          "48": "128.png",
-          "128": "128.png"
+            "16": "128.png",
+            "48": "128.png",
+            "128": "128.png"
         }
-      }
+    },
+    "content_scripts": [
+        {
+            "matches": ["https://www.google.com/*"],
+            "js": ["content.js"]
+        }
+    ],
+    "background": {
+        "service_worker": "content.js"
+    }
 }
